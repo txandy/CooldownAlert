@@ -1,66 +1,66 @@
 # CooldownAlert
 
-> Idiomas: **Español** · [English](README.en.md)
+> Languages: **English** · [Español](README.es.md)
 
-Addon para **World of Warcraft (Midnight / 11.2+)** que reproduce un sonido cuando pulsas una tecla de acción que está:
+A **World of Warcraft (Midnight / 11.2+)** addon that plays a sound when you press an action key that is:
 
-- En **cooldown real** (ignora el GCD).
-- **No usable** (sin maná/rage/runas, stance incorrecta, etc).
-- Opcionalmente, **fuera de rango**.
+- On **real cooldown** (GCD is ignored).
+- **Not usable** (not enough mana/rage/runes, wrong stance, etc).
+- Optionally, **out of range**.
 
-Pensado para corregir el vicio de seguir pulsando la tecla cuando la habilidad aún no está lista. Sin alerta visual — solo un sonido, configurable desde una pequeña UI.
+Designed to break the habit of mashing a key while the ability is still on cooldown. No visual alert — just a configurable sound, tweakable from a small UI.
 
-## Características
+## Features
 
-- Detección fiable vía `C_Spell.GetSpellCooldown` / `C_Item.GetItemCooldown` (devuelven valores normales, tolerantes a los _secret numbers_ de Midnight en combate).
-- Soporta **EllesmereUI** (y cualquier action bar que use *native dispatch*) calculando el slot como `(actionpage - 1) × 12 + buttonID`.
-- Cubre las 8 barras principales (`ACTIONBUTTON1-12`, `MULTIACTIONBAR1-7 BUTTON1-12`).
-- Respeta modifier prefijos: `SHIFT-`, `CTRL-`, `ALT-` y combinaciones.
-- Anti-spam configurable entre alertas.
-- UI con presets de sonido + campo manual para cualquier ID.
+- Reliable detection via `C_Spell.GetSpellCooldown` / `C_Item.GetItemCooldown` (plain values, tolerant to Midnight's _secret numbers_ during combat).
+- Supports **EllesmereUI** (and any action bar using *native dispatch*) by computing the slot as `(actionpage - 1) × 12 + buttonID`.
+- Covers the 8 main bars (`ACTIONBUTTON1-12`, `MULTIACTIONBAR1-7 BUTTON1-12`).
+- Respects modifier prefixes: `SHIFT-`, `CTRL-`, `ALT-` and combinations.
+- Configurable anti-spam cooldown between alerts.
+- UI with sound presets plus a manual input for any sound ID.
 
-## Instalación
+## Installation
 
-1. Descarga o clona el repo dentro de:
+1. Download or clone the repo into:
    ```
    World of Warcraft/_retail_/Interface/AddOns/CooldownAlert/
    ```
-2. Reinicia WoW o `/reload`.
-3. Escribe `/cda` en el chat para ver los comandos.
+2. Restart WoW or `/reload`.
+3. Type `/cda` in chat to see the command list.
 
-## Comandos
+## Commands
 
-| Comando | Acción |
+| Command | Action |
 |---|---|
-| `/cda` | Ayuda |
-| `/cda on` / `off` | Activar / desactivar addon |
-| `/cda cd on`/`off` | Alertar por cooldown real |
-| `/cda unusable on`/`off` | Alertar cuando la skill no es usable |
-| `/cda range on`/`off` | Alertar por fuera de rango (off por defecto) |
-| `/cda sound <id>` | Cambiar el sonido por ID |
-| `/cda test` | Reproducir el sonido actual |
-| `/cda ui` | Abrir la interfaz de selección de sonido |
-| `/cda scan` | Diagnóstico: escanea tus teclas y muestra slot/CD/usable |
-| `/cda capture` | Pulsa una tecla y muestra qué nombre/binding/slot resuelve |
-| `/cda debug` | Prints de depuración al saltar una alerta |
-| `/cda reset` | Restaurar configuración por defecto |
+| `/cda` | Help |
+| `/cda on` / `off` | Enable / disable the addon |
+| `/cda cd on`/`off` | Alert on real cooldown |
+| `/cda unusable on`/`off` | Alert when the skill is not usable |
+| `/cda range on`/`off` | Alert when out of range (off by default) |
+| `/cda sound <id>` | Change the sound by ID |
+| `/cda test` | Play the currently configured sound |
+| `/cda ui` | Open the sound-selection interface |
+| `/cda scan` | Diagnostics: scan your keys and show slot/CD/usable |
+| `/cda capture` | Press a key and show its name/binding/slot |
+| `/cda debug` | Toggle debug prints when an alert fires |
+| `/cda reset` | Restore default configuration |
 
-## UI de sonido
+## Sound UI
 
-`/cda ui` abre una ventana arrastrable con:
+`/cda ui` opens a draggable window with:
 
-- ID del sonido actual.
-- Campo para introducir un ID manual, con botones **Probar** y **Aplicar**.
-- Lista de presets, cada uno con **▶** (escuchar) y **Usar** (aplicar + sonar).
+- Current sound ID displayed.
+- A manual input field with **Play** and **Apply** buttons.
+- A list of presets, each with **▶** (preview) and **Use** (apply + play).
 
-Puedes encontrar más IDs de sonidos en [wago.tools](https://wago.tools/db2/SoundKit).
+More sound IDs can be found at [wago.tools](https://wago.tools/db2/SoundKit).
 
-## Compatibilidad
+## Compatibility
 
-- **WoW Midnight (11.2+ / 12.x)** — usa `C_Spell` y maneja los *secret numbers* que introdujo Blizzard para proteger la API privada.
-- **EllesmereUI ActionBars** — testeado específicamente con esta UI.
-- Cualquier action bar que mantenga los bindings nativos de Blizzard (`ACTIONBUTTON*` / `MULTIACTIONBAR*`).
+- **WoW Midnight (11.2+ / 12.x)** — uses `C_Spell` and handles Blizzard's new *secret numbers* introduced to protect private API.
+- **EllesmereUI ActionBars** — specifically tested with this UI.
+- Any action bar that preserves Blizzard's native bindings (`ACTIONBUTTON*` / `MULTIACTIONBAR*`).
 
-## Licencia
+## License
 
-MIT — ver [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE).
