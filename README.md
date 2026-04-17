@@ -1,5 +1,7 @@
 # CooldownAlert
 
+> Idiomas: **Español** · [English](README.en.md)
+
 Addon para **World of Warcraft (Midnight / 11.2+)** que reproduce un sonido cuando pulsas una tecla de acción que está:
 
 - En **cooldown real** (ignora el GCD).
